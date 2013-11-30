@@ -27,6 +27,7 @@ public class IndexController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//request.getRequestDispatcher("index.html").forward(request, response);
 	}
 
 	/**

@@ -1,14 +1,21 @@
 package ost.teletherapy.project.semantics;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultimediaSemantics {
+public class MultimediaSemantics implements Serializable{
 
+	private static final long serialVersionUID = 6016650481573481893L;
+	
 	private int id;
 	private MultimediaType type;
 	private String pathToMedia;
 	private List<SemanticMeaning> semantics;
+	
+	public MultimediaSemantics()
+	{		
+	}
 
 	public MultimediaSemantics(String pathToMedia, MultimediaType type) {
 		this.pathToMedia = pathToMedia;
@@ -45,6 +52,22 @@ public class MultimediaSemantics {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setType(MultimediaType type) {
+		this.type = type;
+	}
+
+	public void setPathToMedia(String pathToMedia) {
+		this.pathToMedia = pathToMedia;
+	}
+
+	public void setSemantics(List<SemanticMeaning> semantics) {
+		this.semantics = semantics;
+	}
 
 	public void removeSemantics(SemanticMeaning semanticMeaning) {
 		if (this.containsSemantic(semanticMeaning)) {
@@ -71,4 +94,5 @@ public class MultimediaSemantics {
 		return false;
 
 	}
+
 }

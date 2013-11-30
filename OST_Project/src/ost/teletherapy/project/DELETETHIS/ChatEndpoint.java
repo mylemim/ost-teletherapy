@@ -1,4 +1,3 @@
-<!--
 /*
 * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 *
@@ -38,47 +37,24 @@
 * only if the new code is made subject to such option by the copyright
 * holder.
 */
--->
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<jsp:useBean id="multimediaSemantics" class="ost.teletherapy.project.semantics.MultimediaSemantics"></jsp:useBean>
+package ost.teletherapy.project.DELETETHIS;
 
-<html>
-<head>
-<script src="js/websocket.js" type="text/javascript">
-	
-</script>
+import java.io.IOException;
+import javax.websocket.EncodeException;
+import javax.websocket.OnMessage;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>WebSocket : Chat</title>
-</head>
-<body>
-	<h1>WebSocket : Chat</h1>
-	<div style="text-align: center;">
-		<form action="">
-
-			<table>
-				<tr>
-					<td>Users<br /> <textarea rows="6" cols="20" id="userField"
-							readonly="readonly"></textarea>
-					</td>
-					<td>Chat Log<br /> <textarea rows="6" cols="50"
-							id="chatlogField" readonly="readonly"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"><input id="textField" name="name" value="Duke"
-						type="text"><br> <input onclick="join();"
-						value="Join" type="button"> <input
-						onclick="send_message();" value="Chat" type="button"></td>
-				</tr>
-			</table>
-
-		</form>
-	</div>
-	<div id="output"></div>
-
-
-</body>
-</html>
+/**
+* @author Arun Gupta
+*/
+@ServerEndpoint("/websocket")
+public class ChatEndpoint {
+    @OnMessage
+    public void message(String message, Session client) throws IOException, EncodeException {
+        System.out.println(message);
+    	for (Session peer : client.getOpenSessions()) {
+            peer.getBasicRemote().sendObject(message);
+        }
+    }
+}
