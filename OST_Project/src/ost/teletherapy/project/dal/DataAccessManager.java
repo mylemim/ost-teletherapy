@@ -12,6 +12,8 @@ import java.util.List;
 import ost.teletherapy.project.semantics.MultimediaSemantics;
 import ost.teletherapy.project.semantics.MultimediaType;
 import ost.teletherapy.project.semantics.SemanticMeaning;
+import ost.teletherapy.project.user.User;
+import ost.teletherapy.project.user.UserType;
 
 public class DataAccessManager {
 
@@ -20,8 +22,7 @@ public class DataAccessManager {
 	private static void openConnectionToDatabase()
 			throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
-		connection = DriverManager
-				.getConnection("jdbc:sqlite:C:\\ostdb.db");
+		connection = DriverManager.getConnection("jdbc:sqlite:C:\\ostdb.db");
 	}
 
 	private static void openTransactionToDatabase()
@@ -207,5 +208,43 @@ public class DataAccessManager {
 
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return null if unsuccessful login, usertype on successful
+	 */
+	public static UserType loginUser(String username, String password) {
+
+		User user = new User();
+
+		try {
+			openConnectionToDatabase();
+
+			Statement statement = connection.createStatement();
+
+			ResultSet resultSet = statement
+					.executeQuery("select * from user join "
+							+ "usertype on user.id_type=usertype.id where"
+							+ "user.username='" + username + "' "
+							+ "and user.password='" + password + "'");
+
+			resultSet.next();
+			user.setUsername(resultSet.getString("username"));
+			user.setPassword(resultSet.getString("password"));
+
+			if (resultSet.getString("typename").equals("therapist"))
+				user.setType(UserType.Therapist);
+			else
+				user.setType(UserType.Patient);
+
+			closeConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 }
