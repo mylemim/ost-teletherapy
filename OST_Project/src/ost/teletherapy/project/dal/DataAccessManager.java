@@ -18,11 +18,15 @@ import ost.teletherapy.project.user.UserType;
 public class DataAccessManager {
 
 	private static Connection connection = null;
+	private static Boolean isDriverLoaded = false;
 
 	private static void openConnectionToDatabase()
 			throws ClassNotFoundException, SQLException {
-		Class.forName("org.sqlite.JDBC");
-		connection = DriverManager.getConnection("jdbc:sqlite:C:\\ostdb.db");
+		if (!isDriverLoaded) {
+			isDriverLoaded = true;
+			Class.forName("org.sqlite.JDBC");
+		}
+		connection = DriverManager.getConnection("jdbc:sqlite:C:\\ostdb");
 	}
 
 	private static void openTransactionToDatabase()
@@ -230,17 +234,21 @@ public class DataAccessManager {
 							+ "usertype on user.id_type=usertype.id where "
 							+ "user.username='" + username + "' "
 							+ "and user.password='" + password + "'");
-
+			
 			resultSet.next();
 			user.setUsername(resultSet.getString("username"));
 			user.setPassword(resultSet.getString("password"));
 
 			if (resultSet.getString("typename").equals("therapist"))
 				user.setType(UserType.Therapist);
-			else
+			else if (resultSet.getString("typeName").equals("patient"))
 				user.setType(UserType.Patient);
+			else
+				user.setType(UserType.NoType);
 
 			closeConnection();
+			
+			return user.getType();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

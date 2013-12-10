@@ -41,7 +41,13 @@ public class IndexController extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		UserType type = DataAccessManager.loginUser(username, password);
-		String a;
+		
+		if(type == UserType.Therapist)
+			request.getRequestDispatcher("therapist.jsp").forward(request, response);
+		else if(type == UserType.Patient)
+			request.getRequestDispatcher("patient.jsp").forward(request, response);
+		else
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	
 
