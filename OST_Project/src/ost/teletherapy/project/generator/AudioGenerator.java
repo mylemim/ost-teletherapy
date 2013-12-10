@@ -21,6 +21,7 @@ public class AudioGenerator implements IDataGenerator<Float> {
 	@Override
 	public ArrayList<Float> generateData() {
 		// TODO Auto-generated method stub
+		
 		ArrayList<Float> listNumbers = new ArrayList<Float>();
 		float number;
 		
