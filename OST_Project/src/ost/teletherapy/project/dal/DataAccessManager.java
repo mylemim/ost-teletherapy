@@ -227,7 +227,7 @@ public class DataAccessManager {
 
 			ResultSet resultSet = statement
 					.executeQuery("select * from user join "
-							+ "usertype on user.id_type=usertype.id where"
+							+ "usertype on user.id_type=usertype.id where "
 							+ "user.username='" + username + "' "
 							+ "and user.password='" + password + "'");
 
