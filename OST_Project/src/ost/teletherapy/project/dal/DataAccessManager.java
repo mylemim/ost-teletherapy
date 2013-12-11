@@ -1,13 +1,14 @@
 package ost.teletherapy.project.dal;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.NamingException;
 
 import ost.teletherapy.project.semantics.MultimediaSemantics;
 import ost.teletherapy.project.semantics.MultimediaType;
@@ -21,16 +22,20 @@ public class DataAccessManager {
 	private static Boolean isDriverLoaded = false;
 
 	private static void openConnectionToDatabase()
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException, NamingException {
 		if (!isDriverLoaded) {
 			isDriverLoaded = true;
 			Class.forName("org.sqlite.JDBC");
 		}
-		connection = DriverManager.getConnection("jdbc:sqlite:C:\\ostdb");
+
+		javax.naming.InitialContext ctx = new javax.naming.InitialContext();
+		javax.sql.DataSource ds = (javax.sql.DataSource) ctx
+				.lookup("jdbc/ostdb");
+		connection = ds.getConnection();
 	}
 
 	private static void openTransactionToDatabase()
-			throws ClassNotFoundException, SQLException {
+			throws ClassNotFoundException, SQLException, NamingException {
 		openConnectionToDatabase();
 		connection.setAutoCommit(false);
 	}
@@ -58,7 +63,7 @@ public class DataAccessManager {
 			}
 
 			closeConnection();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			e.printStackTrace();
 		}
 
@@ -78,7 +83,7 @@ public class DataAccessManager {
 				connection.commit();
 				connection.setAutoCommit(true);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			// rollback if there's a connection
 			if (connection != null)
 				try {
@@ -112,7 +117,7 @@ public class DataAccessManager {
 
 			return id;
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			e.printStackTrace();
 		}
 
@@ -164,7 +169,7 @@ public class DataAccessManager {
 			}
 
 			closeConnection();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			e.printStackTrace();
 		}
 
@@ -201,7 +206,7 @@ public class DataAccessManager {
 				}
 				connection.setAutoCommit(true);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | NamingException e) {
 			// rollback if there's a connection
 			if (connection != null)
 				try {
@@ -234,7 +239,7 @@ public class DataAccessManager {
 							+ "usertype on user.id_type=usertype.id where "
 							+ "user.username='" + username + "' "
 							+ "and user.password='" + password + "'");
-			
+
 			resultSet.next();
 			user.setUsername(resultSet.getString("username"));
 			user.setPassword(resultSet.getString("password"));
@@ -247,7 +252,7 @@ public class DataAccessManager {
 				user.setType(UserType.NoType);
 
 			closeConnection();
-			
+
 			return user.getType();
 		} catch (Exception e) {
 			e.printStackTrace();

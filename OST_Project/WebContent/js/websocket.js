@@ -38,8 +38,6 @@
 	 * holder.
 	 */
 
-	//var wsUri = "ws://" + document.location.host + document.location.pathname
-	//		+ "/websocket";
 	var wsUri = "ws://" + document.location.host + "/OST_Project/websocket";
 	alert(wsUri);
 
@@ -67,24 +65,15 @@
 	}
 
 	function onOpen() {
-		//writeToScreen("Connected to " + wsUri);
 		alert("Connected to " + wsUri);
 	}
 
 	function onMessage(evt) {
-		//console.log("onMessage");
-		//writeToScreen("RECEIVED: " + evt.data);
 
 		if (evt.data.indexOf("joined") != -1) {
-
-			//userField.innerHTML += evt.data.substring(0, evt.data
-			//	.indexOf(" joined"))
-			//+ "\n";
-
 			var chatLog = document.getElementById('userField');
 			chatLog.value += evt.data + "\n";
 		} else {
-			//chatlogField.innerHTML += evt.data + "\n";
 			var chatLog = document.getElementById('chatlogField');
 			chatLog.value += evt.data + "\n";
 		}
