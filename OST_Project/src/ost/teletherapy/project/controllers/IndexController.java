@@ -13,7 +13,7 @@ import ost.teletherapy.project.user.UserType;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/")
+@WebServlet("/index")
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -45,6 +45,6 @@ public class IndexController extends HttpServlet {
 		else if(type == UserType.Patient)
 			response.sendRedirect(request.getContextPath()+"/patient");
 		else
-			response.sendRedirect(request.getContextPath()+"/");
+			response.sendRedirect(request.getContextPath()+"/index");
 	}
 }

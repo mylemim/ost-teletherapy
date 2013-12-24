@@ -13,7 +13,6 @@ websocket.onmessage = function(evt) {
 websocket.onerror = function(evt) {
 	onError(evt);
 };
-var output = document.getElementById("output");
 
 function join() {
 	username = textField.value;
@@ -44,5 +43,6 @@ function onError(evt) {
 }
 
 function writeToScreen(message) {
+	var output = document.getElementById("output");
 	output.innerHTML += message + "<br>";
 }
