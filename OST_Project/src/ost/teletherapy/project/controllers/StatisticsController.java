@@ -16,4 +16,5 @@ public class StatisticsController {
             peer.getBasicRemote().sendObject(message);
         }
     }
+    
 }
