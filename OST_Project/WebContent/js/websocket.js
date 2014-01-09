@@ -1,4 +1,3 @@
-
 var wsUri = "ws://" + document.location.host + "/OST_Project/websocket";
 alert(wsUri);
 var websocket = new WebSocket(wsUri);

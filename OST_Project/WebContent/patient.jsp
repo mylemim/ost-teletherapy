@@ -4,91 +4,10 @@
 <html>
 <head>
 <script src="js/patientWebsocket.js" type="text/javascript">
-	
 </script>
+<link rel="stylesheet" type="text/css" href="css/patient.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Patient page</title>
-</head>
-<style type="text/css">
-#header {
-	position: absolute;
-	top: 0%;
-	left: 0%;
-	width: 100%;
-	height: 20%;
-	background: blue;
-	opacity: 0.7;
-	filter: alpha(opacity = 70);
-	box-shadow: 2px 10px 5px #888888;
-	text-align: center;
-}
-
-h1 {
-	color: white;
-	font-family: Arial;
-	font-size: 40px;
-	text-shadow: 1px 1px #8585AD;
-	margin-top: 3%;
-}
-
-#video_placeholder {
-	position: absolute;
-	top: 30%;
-	left: 10%;
-	border: solid 2px blue;
-	overflow: hidden;
-}
-
-#image_placeholder {
-	position: absolute;
-	top: 30%;
-	right: 10%;
-	width: 30%;
-	height: 40%;
-	border: solid 2px blue;
-}
-
-#video_feed {
-	position: absolute;
-	top: 21%;
-	left: 18%;
-	color: blue;
-	font-family: Arial;
-	font-size: 30px;
-	text-shadow: 1px 1px #8585AD;
-}
-
-#image_feed {
-	position: absolute;
-	top: 21%;
-	right: 19%;
-	color: blue;
-	font-family: Arial;
-	font-size: 30px;
-	text-shadow: 1px 1px #8585AD;
-}
-
-#session {
-	position: absolute;
-	top: 80%;
-	left: 35%;
-	height: 15%;
-	width: 30%;
-	background: black;
-	opacity: 0.7;
-	filter: alpha(opacity = 70);
-	text-align: center;
-}
-
-#choose_session {
-	color: white;
-	font-family: Arial;
-	font-size: 20px;
-	text-shadow: 1px 1px #8585AD;
-	margin-top: 10%;
-}
-</style>
-
 </head>
 
 <body>
