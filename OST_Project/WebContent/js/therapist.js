@@ -208,11 +208,27 @@ function webSocketInit() {
 	function onMessage(evt) {
 
 		if (evt.data.indexOf("joined") != -1) {
-			var chatLog = document.getElementById('userField');
-			chatLog.value += evt.data + "\n";
+			var userField = document.getElementById('userField');
+			userField.value += evt.data + "\n";
 		} else {
-			var chatLog = document.getElementById('chatlogField');
-			chatLog.value += evt.data + "\n";
+			// check the typeif it's not a joined notification
+
+			var parsedData = JSON.parse(evt.data);
+
+			// check the type of the received data
+			// AV signal has audio and visual data, while physiology has
+			// heartBeat and skinConductivity
+			if (parsedData.videoSignal != null
+					&& parsedData.audioSignal != null) {
+				var avLogField = document.getElementById('avLogField');
+				avLogField.value += evt.data + "\n";
+			}
+			if (parsedData.heartBeat != null
+					&& parsedData.skinConductivity != null) {
+				var physioLogField = document.getElementById('physioLogField');
+				physioLogField.value += evt.data + "\n";
+			}
+
 		}
 	}
 
@@ -225,20 +241,21 @@ function webSocketInit() {
 		output.innerHTML += message + "<br>";
 	}
 
-	// register click listeners
-	$("#joinButton").click(function() {
-		join();
-	});
-	$("#chatButton").click(function() {
-		sendAVmessage();
-	});
+	setInterval(sendAVmessage, 1000);
 }
 
 /* WRAPPERS */
 // the message wrapper for the audiovideosignal
-function audioVideoWrapper(video, audio) {
+function audioVideoWrapper(videoSignal, audioSignal) {
 	this.role = "therapist";
 	this.sessionId = -1;
-	this.video = video;
-	this.audio = audio;
+	this.videoSignal = videoSignal;
+	this.audioSignal = audioSignal;
+}
+// the message wrapper for physiological signals
+function physiologialSignalWrapper(heartBeat, skinConductivity) {
+	this.role = "patient";
+	this.sessionId = -1;
+	this.heartBeat = heartBeat;
+	this.skinConductivity = skinConductivity;
 }

@@ -40,10 +40,15 @@ function webSocketInit() {
 			var chatLog = document.getElementById('userField');
 			chatLog.value += evt.data + "\n";
 		} else {
-			var chatLog = document.getElementById('chatlogField');
-			// chatLog.value += evt.data + "\n";
+			// check the typeif it's not a joined notification
 
-			chatLog.value += evt.data + "\n";
+			var parsedData = JSON.parse(evt.data);
+
+			// check the type of the received data
+			if (parsedData.videoSignal!=null && parsedData.audioSignal!=null) {
+				var avLogField = document.getElementById('avLogField');
+				avLogField.value += evt.data + "\n";
+			}
 		}
 	}
 
@@ -56,22 +61,16 @@ function webSocketInit() {
 		output.innerHTML += message + "<br>";
 	}
 
-	// register click listeners
-	$("#joinButton").click(function() {
-		join();
-	});
-	$("#chatButton").click(function() {
-		sendAVmessage();
-	});
+	setInterval(sendAVmessage, 1000);
 }
 
 /* WRAPPERS */
-// the message wrapper for the audiovideosignal
-function audioVideoWrapper(video, audio) {
+// the message wrapper for the audiovideo signal
+function audioVideoWrapper(videoSignal, audioSignal) {
 	this.role = "patient";
 	this.sessionId = -1;
-	this.video = video;
-	this.audio = audio;
+	this.videoSignal = videoSignal;
+	this.audioSignal = audioSignal;
 }
 // the message wrapper for physiological signals
 function physiologialSignalWrapper(heartBeat, skinConductivity) {

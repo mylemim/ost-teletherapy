@@ -41,16 +41,19 @@
 
 			<table>
 				<tr>
-					<td>Users<br /> <textarea rows="6" cols="20" id="userField"
+					<td>Users<br /> <textarea rows="25" cols="20" id="userField"
 							readonly="readonly"></textarea>
 					</td>
-					<td>Message Log<br /> <textarea rows="6" cols="50"
-							id="chatlogField" readonly="readonly"></textarea>
+					<td>AV Log<br /> <textarea rows="25" cols="80"
+							id="avLogField" readonly="readonly"></textarea>
+					</td>
+					<td>Physio Log<br /> <textarea rows="25" cols="80"
+							id="physioLogField" readonly="readonly"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"> <br>  <input id="chatButton" value="Generate"
-						type="button"></td>
+					<td colspan="2"><br> <input id="chatButton"
+						value="Generate" type="button"></td>
 				</tr>
 			</table>
 
