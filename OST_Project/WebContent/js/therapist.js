@@ -195,7 +195,7 @@ function webSocketInit() {
 		websocket.send("Therapist joined");
 	}
 
-	function sendAVmessage() {
+	function sendAVMessage() {
 		// send the audio-video message wrapped as JSON
 		var json = JSON.stringify(new audioVideoWrapper(1, 1));
 		websocket.send(json);
@@ -241,7 +241,7 @@ function webSocketInit() {
 		output.innerHTML += message + "<br>";
 	}
 
-	setInterval(sendAVmessage, 1000);
+	setInterval(sendAVMessage, 1000);
 }
 
 /* WRAPPERS */
