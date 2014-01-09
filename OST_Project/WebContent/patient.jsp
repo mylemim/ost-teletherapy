@@ -2,12 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<title>Patient page</title>
+
 <head>
 <script src="js/jquery-2.0.3.js" type="text/javascript"></script>
 <script src="js/patient.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="css/patient.css">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Patient page</title>
 </head>
 
 <body>

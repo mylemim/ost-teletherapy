@@ -177,7 +177,6 @@ function webSocketInit() {
 	var wsUri = "ws://" + document.location.host + "/OST_Project/websocket";
 	alert(wsUri);
 	var websocket = new WebSocket(wsUri);
-	var username;
 
 	websocket.onopen = function(evt) {
 		onOpen(evt);
@@ -190,12 +189,15 @@ function webSocketInit() {
 	};
 
 	function join() {
-		username = textField.value;
-		websocket.send(username + " joined");
+		websocket.send("Therapist joined");
 	}
 
 	function send_message() {
-		websocket.send(username + ": " + textField.value);
+		//websocket.send(username + ": " + textField.value);
+		
+		//send the audio-video message wrapped as JSON
+		var json = JSON.stringify(new audioVideoWrapper(1,1));
+		websocket.send(json);
 	}
 
 	function onOpen() {
@@ -229,4 +231,13 @@ function webSocketInit() {
 	$("#chatButton").click(function() {
 		send_message();
 	});
+}
+
+/* WRAPPERS */
+// the message wrapper for the audiovideosignal
+function audioVideoWrapper(video, audio) {
+	this.role = "therapist";
+	this.sessionId = -1;
+	this.video = video;
+	this.audio = audio;
 }

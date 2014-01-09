@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<title>Therapist page</title>
 
 <head>
-
 <link rel="stylesheet" type="text/plain" href="css/jquery.jqplot.css" />
 <script src="js/jquery-2.0.3.js" type="text/javascript"></script>
 <script src="js/jquery.jqplot.js" type="text/javascript"></script>
@@ -13,7 +13,6 @@
 
 <script src="js/therapist.js"></script>
 <link rel="stylesheet" type="text/css" href="css/therapist.css">
-
 </head>
 
 <body>
