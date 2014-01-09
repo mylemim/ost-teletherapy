@@ -3,8 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="js/patientWebsocket.js" type="text/javascript">
-</script>
+<script src="js/jquery-2.0.3.js" type="text/javascript"></script>
+<script src="js/patient.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="css/patient.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Patient page</title>
@@ -30,8 +30,6 @@
 		<h2 id="choose_session">Choose another session</h2>
 	</div>
 
-
-
 	<div style="text-align: center; margin-top: 872px;">
 		<form action="">
 
@@ -46,9 +44,9 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input id="textField" name="name" value="Duke"
-						type="text"><br> <input onclick="join();"
-						value="Join" type="button"> <input
-						onclick="send_message();" value="Chat" type="button"></td>
+						type="text"> <br> <input id="joinButton" value="Join"
+						type="button"> <input id="chatButton" value="Chat"
+						type="button"></td>
 				</tr>
 			</table>
 

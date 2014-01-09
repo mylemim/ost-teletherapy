@@ -17,7 +17,6 @@ function webSocketInit() {
 	websocket.onerror = function(evt) {
 		onError(evt);
 	};
-	var output = document.getElementById("output");
 
 	function join() {
 		username = textField.value;
@@ -48,6 +47,15 @@ function webSocketInit() {
 	}
 
 	function writeToScreen(message) {
+		var output = document.getElementById("output");
 		output.innerHTML += message + "<br>";
 	}
+	
+	//register click listeners
+	$("#joinButton").click(function() {
+		join();
+	});	
+	$("#chatButton").click(function() {
+		send_message();
+	});	
 }

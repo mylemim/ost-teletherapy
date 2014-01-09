@@ -5,18 +5,11 @@
 
 <head>
 
-<link rel="stylesheet" type="text/plain"
-	href="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/jquery.jqplot.css" />
-
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script
-	src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/jquery.jqplot.js"
-	type="text/javascript"></script>
-<script
-	src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.barRenderer.js"></script>
-<script
-	src="https://bitbucket.org/cleonello/jqplot/raw/b5a7796a9ebf/src/plugins/jqplot.categoryAxisRenderer.js"></script>
+<link rel="stylesheet" type="text/plain" href="css/jquery.jqplot.css" />
+<script src="js/jquery-2.0.3.js" type="text/javascript"></script>
+<script src="js/jquery.jqplot.js" type="text/javascript"></script>
+<script src="js/jqplot.barRenderer.js"></script>
+<script src="js/jqplot.categoryAxisRenderer.js"></script>
 
 <script src="js/therapist.js"></script>
 <link rel="stylesheet" type="text/css" href="css/therapist.css">
@@ -44,6 +37,32 @@
 		<div id="chart3" class="plot" style="width: 700px; height: 500px;"></div>
 	</div>
 
+	<div style="text-align: center; margin-top: 872px;">
+		<form action="">
+
+			<table>
+				<tr>
+					<td>Users<br /> <textarea rows="6" cols="20" id="userField"
+							readonly="readonly"></textarea>
+					</td>
+					<td>Chat Log<br /> <textarea rows="6" cols="50"
+							id="chatlogField" readonly="readonly"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input id="textField" name="name" value="Duke"
+						type="text"> <br> <input id="joinButton" value="Join"
+						type="button"> <input id="chatButton" value="Chat"
+						type="button"></td>
+				</tr>
+			</table>
+
+		</form>
+	</div>
+	<div id="output"></div>
+
 </body>
+
+
 
 </html>
