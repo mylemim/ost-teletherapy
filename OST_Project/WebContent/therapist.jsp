@@ -36,7 +36,7 @@
 		<div id="chart3" class="plot" style="width: 700px; height: 500px;"></div>
 	</div>
 
-	<div style="text-align: center; margin-top: 872px;">
+	<div style="text-align: center; margin-top: 3285px;">
 		<form action="">
 
 			<table>
@@ -44,14 +44,12 @@
 					<td>Users<br /> <textarea rows="6" cols="20" id="userField"
 							readonly="readonly"></textarea>
 					</td>
-					<td>Chat Log<br /> <textarea rows="6" cols="50"
+					<td>Message Log<br /> <textarea rows="6" cols="50"
 							id="chatlogField" readonly="readonly"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input id="textField" name="name" value="Duke"
-						type="text"> <br> <input id="joinButton" value="Join"
-						type="button"> <input id="chatButton" value="Chat"
+					<td colspan="2"> <br>  <input id="chatButton" value="Generate"
 						type="button"></td>
 				</tr>
 			</table>

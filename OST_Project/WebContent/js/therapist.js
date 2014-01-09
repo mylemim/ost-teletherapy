@@ -180,6 +180,9 @@ function webSocketInit() {
 
 	websocket.onopen = function(evt) {
 		onOpen(evt);
+
+		// join as soon as there is a connection
+		join();
 	};
 	websocket.onmessage = function(evt) {
 		onMessage(evt);
@@ -192,11 +195,9 @@ function webSocketInit() {
 		websocket.send("Therapist joined");
 	}
 
-	function send_message() {
-		//websocket.send(username + ": " + textField.value);
-		
-		//send the audio-video message wrapped as JSON
-		var json = JSON.stringify(new audioVideoWrapper(1,1));
+	function sendAVmessage() {
+		// send the audio-video message wrapped as JSON
+		var json = JSON.stringify(new audioVideoWrapper(1, 1));
 		websocket.send(json);
 	}
 
@@ -229,7 +230,7 @@ function webSocketInit() {
 		join();
 	});
 	$("#chatButton").click(function() {
-		send_message();
+		sendAVmessage();
 	});
 }
 

@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <title>Patient page</title>
-
 <head>
 <script src="js/jquery-2.0.3.js" type="text/javascript"></script>
 <script src="js/patient.js" type="text/javascript"></script>
@@ -38,14 +37,12 @@
 					<td>Users<br /> <textarea rows="6" cols="20" id="userField"
 							readonly="readonly"></textarea>
 					</td>
-					<td>Chat Log<br /> <textarea rows="6" cols="50"
+					<td>Message Log<br /> <textarea rows="6" cols="50"
 							id="chatlogField" readonly="readonly"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input id="textField" name="name" value="Duke"
-						type="text"> <br> <input id="joinButton" value="Join"
-						type="button"> <input id="chatButton" value="Chat"
+					<td colspan="2"> <br>  <input id="chatButton" value="Generate"
 						type="button"></td>
 				</tr>
 			</table>
