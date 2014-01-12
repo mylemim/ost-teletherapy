@@ -29,9 +29,8 @@ function webSocketInit() {
 		var json = JSON.stringify(new audioVideoWrapper(1, 1));
 		websocket.send(json);
 	}
-	
-	function sendPhysioMessage()
-	{
+
+	function sendPhysioMessage() {
 		// send the phsysio message wrapped as JSON
 		var json = JSON.stringify(new physiologialSignalWrapper(1, 1));
 		websocket.send(json);
@@ -52,9 +51,14 @@ function webSocketInit() {
 			var parsedData = JSON.parse(evt.data);
 
 			// check the type of the received data
-			if (parsedData.videoSignal!=null && parsedData.audioSignal!=null) {
+			if (parsedData.videoSignal != null
+					&& parsedData.audioSignal != null) {
 				var avLogField = document.getElementById('avLogField');
-				avLogField.value += evt.data + "\n";
+
+				var AVSignal = JSON.parse(evt.data);
+
+				if (AVSignal.role == "therapist")
+					avLogField.value += evt.data + "\n";
 			}
 		}
 	}

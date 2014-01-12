@@ -221,12 +221,20 @@ function webSocketInit() {
 			if (parsedData.videoSignal != null
 					&& parsedData.audioSignal != null) {
 				var avLogField = document.getElementById('avLogField');
-				avLogField.value += evt.data + "\n";
+
+				var AVSignal = JSON.parse(evt.data);
+
+				if (AVSignal.role == "patient")
+					avLogField.value += evt.data + "\n";
 			}
 			if (parsedData.heartBeat != null
 					&& parsedData.skinConductivity != null) {
 				var physioLogField = document.getElementById('physioLogField');
-				physioLogField.value += evt.data + "\n";
+
+				var physioSignal = JSON.parse(evt.data);
+
+				if (physioSignal.role == "patient")
+					physioLogField.value += evt.data + "\n";
 			}
 
 		}
