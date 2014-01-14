@@ -117,16 +117,13 @@ function webSocketInit()
 }
 
 
-
-//podaci
-var totalPoints = 50;
-
+// podaci za grafove
 var data_video = [];
 var data_audio = [];
 
 // funkcije za dohvaćanje raznih podataka
-var getVideoData = function() { return data_video; };
-var getAudioData = function() { return data_audio; };
+var getVideoData = function() { return getData(data_video); };
+var getAudioData = function() { return getData(data_audio); };
 
 
 

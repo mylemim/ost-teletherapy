@@ -42,6 +42,9 @@ function setOthersStatus(status, nodeId)
 //brzina slanja
 var sendTime = 1000;
 
+// gustoća x osi
+var totalPoints = 50;
+
 //inicijalizacija bilo kojeg grafa
 function initChart(containerId, fetchData)
 {
@@ -75,9 +78,9 @@ function initChart(containerId, fetchData)
 function setData(data, value) {
 
 	if (data.length > totalPoints)
-		data = data.slice(1);
+		data = data.shift();
 
-	data.push([data.length, value]);
+	data.push(value);
 };
 
 //funkcija za vraćanje

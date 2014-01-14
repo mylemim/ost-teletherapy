@@ -120,20 +120,17 @@ function webSocketInit()
 }
 
 
-
-// podaci
-var totalPoints = 50;
-
+// podaci za grafove
 var data_video = [];
 var data_audio = [];
 var data_heart = [];
 var data_conductivity = [];
 
 // funkcije za dohvaćanje raznih podataka
-var getVideoData = function() { return data_video; };
-var getAudioData = function() { return data_audio; };
-var getHeartData = function() { return data_heart; };
-var getConductivityData = function() { return data_conductivity; };
+var getVideoData = function() { return getData(data_video); };
+var getAudioData = function() { return getData(data_audio); };
+var getHeartData = function() { return getData(data_heart); };
+var getConductivityData = function() { return getData(data_conductivity); };
 
 
 
